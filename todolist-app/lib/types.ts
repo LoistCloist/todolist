@@ -1,16 +1,16 @@
 export interface User {
     id: number;
+    username: string;
     email: string;
     password_hash: string;
     created_at: Date;
     updated_at: Date;
-
 }
 
 export interface List {
     id: number;
     user_id: number;
-    title: string;
+    name: string;
     description: string | null;
     created_at: Date;
     updated_at: Date;
@@ -18,8 +18,9 @@ export interface List {
 
 export interface Task {
     id: number;
-    list_id: number;
-    title: string;
+    user_id: number;
+    list_id: number | null;
+    name: string;
     description: string | null;
     completed: boolean;
     priority: number;
