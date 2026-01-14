@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
         return NextResponse.json(
             {
                 message: "Returned all tasks for user.",
-                tasks: result.rows[0]
+                tasks: result.rows
             }
         )
     } catch(e) {
