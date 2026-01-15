@@ -3,9 +3,7 @@ import pool from '@/lib/db';
 import { User } from '@/lib/types';
 import bcrypt from 'bcrypt';
 
-// GET - get a specific user
-export async function GET(request: Request) {
-}
+// GET
 // POST - register user
 export async function POST(request: Request) {
     try {
@@ -27,7 +25,9 @@ export async function POST(request: Request) {
         // password hashing logic
         const saltRounds = 10
         const password_hash = await bcrypt.hash(password, saltRounds);
-        const result = await pool.query('INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING id, username, email, created_at, updated_at', [username, email, password_hash]);
+        const result = await pool.query(
+            'INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING id, username, email, created_at, updated_at'
+            , [username, email, password_hash]);
         const newUser = result.rows[0];
         return NextResponse.json(
             {
@@ -44,3 +44,6 @@ export async function POST(request: Request) {
         )
     }
 }
+
+// PATCH
+// DELETE
