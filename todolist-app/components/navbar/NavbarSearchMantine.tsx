@@ -1,4 +1,3 @@
-'use client'
 import { IconBulb, IconCheckbox, IconPlus, IconSearch, IconUser } from '@tabler/icons-react';
 import {
   ActionIcon,
