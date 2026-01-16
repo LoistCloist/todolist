@@ -1,8 +1,10 @@
 'use client'
-import { 
-    AppShell, 
+import {
+    AppShell,
     Burger,
-    Grid
+    Grid,
+    Box,
+    Stack
  } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NavbarSearch } from '@/components/navbar/NavbarSearchMantine';
@@ -34,15 +36,17 @@ export default function Dashboard() {
         <NavbarSearch></NavbarSearch>
       </AppShell.Navbar>
 
-      <AppShell.Main style={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
-        <Grid grow style={{ display: 'flex'}}>
-            <Grid.Col span={6}><ListCard></ListCard></Grid.Col>
-            <Grid.Col span={6}><ListCard></ListCard></Grid.Col>
-        </Grid>
-        <Grid grow style={{ display: 'flex'}}>
-            <Grid.Col span={6}><ListCard></ListCard></Grid.Col>
-            <Grid.Col span={6}><ListCard></ListCard></Grid.Col>
-        </Grid>
+      <AppShell.Main>
+        <Stack h="100vh">
+          <Grid h="50vh">
+              <Grid.Col span={6} h="100%"><ListCard title="Urgent + Important"/></Grid.Col>
+              <Grid.Col span={6} h="100%"><ListCard title="Priority 2"/></Grid.Col>
+          </Grid>
+          <Grid h="50vh" mt="lg">
+              <Grid.Col span={6} h="100%"><ListCard title="Priority 3"/></Grid.Col>
+              <Grid.Col span={6} h="100%"><ListCard title="Priority 4"/></Grid.Col>
+          </Grid>
+        </Stack>
       </AppShell.Main>
     </AppShell>
   );
